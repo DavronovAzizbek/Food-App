@@ -3,6 +3,7 @@ const colors = require("colors");
 const cors = require("cors");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
+const router = require("./routes/testRoutes");
 
 dotenv.config();
 
@@ -11,6 +12,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+
+app.use(router);
 
 app.get("/", (req, res) => {
   return res
