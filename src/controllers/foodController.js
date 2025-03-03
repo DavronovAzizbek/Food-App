@@ -136,9 +136,101 @@ const getFoodByRestaurantController = async (req, res) => {
   }
 };
 
+const updateFoodController = async (req, res) => {
+  try {
+    const foodId = req.params.id;
+    if (!foodId) {
+      return res.status(404).send({
+        success: false,
+        message: "No Food ID Was Found",
+      });
+    }
+    const food = await foodModal.findById(foodId);
+    if (!food) {
+      return res.status(404).send({
+        success: false,
+        message: "No Food Found",
+      });
+    }
+    const {
+      title,
+      description,
+      price,
+      imageUrl,
+      foodTags,
+      category,
+      code,
+      isAvailable,
+      restaurant,
+      rating,
+    } = req.body;
+
+    const updateFood = await foodModal.findByIdAndUpdate(
+      foodId,
+      {
+        title,
+        description,
+        price,
+        imageUrl,
+        foodTags,
+        category,
+        code,
+        isAvailable,
+        restaurant,
+        rating,
+      },
+      { new: true }
+    );
+    res.status(200).send({
+      success: true,
+      message: "Food Item Was Updated",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error In Update Food API",
+      error,
+    });
+  }
+};
+
+const deleteFoodController = async (req, res) => {
+  try {
+    const foodId = req.params.id;
+    if (!foodId) {
+      return res.status(404).send({
+        success: false,
+        message: "Provide Food ID",
+      });
+    }
+    const food = await foodModal.findById(foodId);
+    if (!food) {
+      return res.status(404).send({
+        success: false,
+        message: "No Food Found With ID",
+      });
+    }
+    await foodModal.findByIdAndDelete(foodId);
+    res.status(200).send({
+      success: true,
+      message: "Food Item Was Deleted",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error In Delete Food API",
+      error,
+    });
+  }
+};
+
 module.exports = {
   createFoodController,
   getAllFoodsController,
   getSingleFoodController,
   getFoodByRestaurantController,
+  updateFoodController,
+  deleteFoodController,
 };
