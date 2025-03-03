@@ -19,6 +19,7 @@ app.use(morgan("dev"));
 app.use("/api/v1/auth", require("./routes/authRoutes"));
 app.use("/api/v1/user", require("./routes/userRoutes"));
 app.use("/api/v1/restaurant", require("./routes/restaurantRoutes"));
+app.use("/api/v1/category", require("./routes/categoryRoutes"));
 
 app.use(router);
 
