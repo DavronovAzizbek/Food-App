@@ -12,7 +12,6 @@ module.exports = async (req, res, next) => {
       next();
     }
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Un-Authorized Access",
