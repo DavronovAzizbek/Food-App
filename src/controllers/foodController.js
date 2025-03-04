@@ -43,7 +43,6 @@ const createFoodController = async (req, res) => {
       newFood,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Create Food API",
@@ -67,7 +66,6 @@ const getAllFoodsController = async (req, res) => {
       foods,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Get All Foods API",
@@ -97,7 +95,6 @@ const getSingleFoodController = async (req, res) => {
       food,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Get Single Food API",
@@ -128,7 +125,6 @@ const getFoodByRestaurantController = async (req, res) => {
       food,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Get Single Food API",
@@ -187,7 +183,6 @@ const updateFoodController = async (req, res) => {
       message: "Food Item Was Updated",
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Update Food API",
@@ -218,7 +213,6 @@ const deleteFoodController = async (req, res) => {
       message: "Food Item Was Deleted",
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Delete Food API",
@@ -257,7 +251,6 @@ const placeOrderController = async (req, res) => {
       newOrder,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Place Order API",
@@ -286,7 +279,6 @@ const orderStatusController = async (req, res) => {
       message: "Order Status Updated Successfully",
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Order Status API",

@@ -46,7 +46,6 @@ const createRestaurantController = async (req, res) => {
       message: "New Restaurant Created Successfully",
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Create Restaurant API",
@@ -70,7 +69,6 @@ const getAllRestaurantController = async (req, res) => {
       restaurants,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Get All Restaurant API",
@@ -101,7 +99,6 @@ const getRestaurantByIdController = async (req, res) => {
       restaurant,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Get Restaurant By Id API",
@@ -125,7 +122,6 @@ const deleteRestaurantController = async (req, res) => {
       message: "Restaurant Deleted Successfully",
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Delete Restaurant API",

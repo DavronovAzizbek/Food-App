@@ -17,7 +17,6 @@ const createCatController = async (req, res) => {
       newCategory,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Create Cat API",
@@ -41,7 +40,6 @@ const getAllCatController = async (req, res) => {
       categories,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Get All Category API",
@@ -70,7 +68,6 @@ const updateCatController = async (req, res) => {
       message: "Category Updated Successfully",
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Update Cat API",
@@ -101,7 +98,6 @@ const deleteCatController = async (req, res) => {
       message: "Category Deleted Successfully",
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Delete Cat API",

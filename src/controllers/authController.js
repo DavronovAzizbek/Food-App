@@ -39,7 +39,6 @@ const registerController = async (req, res) => {
       user,
     });
   } catch (error) {
-    console.error(error);
     res.status(500).send({
       success: false,
       message: "Error In Register API",
@@ -85,7 +84,6 @@ const loginController = async (req, res) => {
       user,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Login API",

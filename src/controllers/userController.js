@@ -19,7 +19,6 @@ const getUserController = async (req, res) => {
       user,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Get User API",
@@ -50,7 +49,6 @@ const updateUserController = async (req, res) => {
       message: "User Updated Successfully",
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Update User API",
@@ -94,7 +92,6 @@ const updatePasswordController = async (req, res) => {
       message: "Password Updated",
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Password Update API",
@@ -130,7 +127,6 @@ const resetPasswordController = async (req, res) => {
       message: "Password Reset Successfully",
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Password RESET API",
@@ -147,7 +143,6 @@ const deleteProfileController = async (req, res) => {
       message: "Your account has been deleted",
     });
   } catch (error) {
-    console.log(error);
     res.status(500).send({
       success: false,
       message: "Error In Delete Profile API",
