@@ -227,6 +227,7 @@ const deleteFoodController = async (req, res) => {
   }
 };
 
+// Order
 const placeOrderController = async (req, res) => {
   try {
     const { cart } = req.body;
@@ -265,6 +266,35 @@ const placeOrderController = async (req, res) => {
   }
 };
 
+const orderStatusController = async (req, res) => {
+  try {
+    const orderId = req.params.id;
+    if (!orderId) {
+      return res.status(404).send({
+        success: false,
+        message: "Please Provide Valid Order ID",
+      });
+    }
+    const { status } = req.body;
+    const order = await orderModel.findByIdAndUpdate(
+      orderId,
+      { status },
+      { new: true }
+    );
+    res.status(200).send({
+      success: true,
+      message: "Order Status Updated Successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error In Order Status API",
+      error,
+    });
+  }
+};
+
 module.exports = {
   createFoodController,
   getAllFoodsController,
@@ -273,4 +303,5 @@ module.exports = {
   updateFoodController,
   deleteFoodController,
   placeOrderController,
+  orderStatusController,
 };
