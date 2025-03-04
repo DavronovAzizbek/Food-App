@@ -3,7 +3,6 @@ const colors = require("colors");
 const cors = require("cors");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
-const router = require("./routes/testRoutes");
 const connectDb = require("./config/db");
 
 dotenv.config();
@@ -21,14 +20,6 @@ app.use("/api/v1/user", require("./routes/userRoutes"));
 app.use("/api/v1/restaurant", require("./routes/restaurantRoutes"));
 app.use("/api/v1/category", require("./routes/categoryRoutes"));
 app.use("/api/v1/food", require("./routes/foodRoutes"));
-
-app.use(router);
-
-app.get("/", (req, res) => {
-  return res
-    .status(200)
-    .send("<h1>Welcome to Food Server APP API BASE PROJECT </h1>");
-});
 
 const PORT = process.env.PORT || 8000;
 
