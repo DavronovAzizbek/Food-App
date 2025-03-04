@@ -7,6 +7,7 @@ const {
   getFoodByRestaurantController,
   updateFoodController,
   deleteFoodController,
+  placeOrderController,
 } = require("../controllers/foodController");
 
 const router = express.Router();
@@ -17,5 +18,8 @@ router.get("/get/:id", getSingleFoodController);
 router.get("/getByRestaurant/:id", getFoodByRestaurantController);
 router.put("/update/:id", authMiddleware, updateFoodController);
 router.delete("/delete/:id", authMiddleware, deleteFoodController)
+
+// Order
+router.post("/placeorder", authMiddleware, placeOrderController)
 
 module.exports = router;

@@ -1,4 +1,5 @@
 const foodModal = require("../models/foodModal");
+const orderModel = require("../models/orderModel");
 
 const createFoodController = async (req, res) => {
   try {
@@ -226,6 +227,44 @@ const deleteFoodController = async (req, res) => {
   }
 };
 
+const placeOrderController = async (req, res) => {
+  try {
+    const { cart } = req.body;
+    if (!cart) {
+      return res.status(500).send({
+        success: false,
+        message: "Please Food Cart or Payment Method",
+      });
+    }
+    let total = 0;
+
+    cart.map((i) => {
+      total += i.price;
+    });
+
+    const newOrder = new orderModel({
+      foods: cart,
+      payment: total,
+      buyer: req.body.id,
+    });
+
+    await newOrder.save();
+
+    res.status(201).send({
+      success: true,
+      message: "Order Placed Successfully",
+      newOrder,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error In Place Order API",
+      error,
+    });
+  }
+};
+
 module.exports = {
   createFoodController,
   getAllFoodsController,
@@ -233,4 +272,5 @@ module.exports = {
   getFoodByRestaurantController,
   updateFoodController,
   deleteFoodController,
+  placeOrderController,
 };
